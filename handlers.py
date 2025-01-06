@@ -56,7 +56,7 @@ async def process_add_shop(message: Message, state: FSMContext):
             response_dev = url_name_shop_dev
             result = {"api_key": api_key, "name_shop": response_dev}
             save = save_config(result)
-            if save is None:
+            if not save:
                 await message.reply("Магазин успешно добавлен в базу.")
             elif save == 409:
                 await message.reply("Магазин уже был добавлен в базу")
